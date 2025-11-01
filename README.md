@@ -1,5 +1,4 @@
-
-      <!doctype html>
+<!doctype html>
 <html lang="sq">
 <head>
   <meta charset="utf-8"/>
