@@ -5,83 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IPTV Familjare</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1628;
-      color: white;
-      text-align: center;
-    }
-    header {
-      background: #12294d;
-      padding: 15px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .kanal {
-      margin: 15px auto;
-      background: #1e3357;
-      width: 90%;
-      max-width: 600px;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-    }
-    .kanal button {
-      background: #29c86f;
-      border: none;
-      padding: 10px 20px;
-      color: #000;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    video, iframe {
-      width: 95%;
-      max-width: 600px;
-      height: 340px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 10px;
-      background: black;
-    }
+    body {font-family: Arial, sans-serif; background:#10182b; color:white; text-align:center; margin:0;}
+    header {background:#182c4d; padding:15px; font-size:22px; font-weight:bold;}
+    .list {display:flex; flex-wrap:wrap; justify-content:center; margin-top:20px;}
+    .ch {background:#1e3357; width:200px; margin:8px; padding:10px; border-radius:10px; box-shadow:0 0 8px rgba(255,255,255,0.1);}
+    button {background:#2ad978; color:black; font-weight:bold; border:none; border-radius:8px; padding:8px 16px; margin-top:8px; cursor:pointer;}
+    video, iframe {width:95%; max-width:600px; height:340px; border:none; border-radius:10px; margin-top:10px; background:black;}
   </style>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
 
-<header>📺 IPTV Familjare</header>
+<header>📺 IPTV Familjare – Kanale Falas</header>
 
-<div id="lista">
-  <div class="kanal">
+<div class="list">
+  <div class="ch">
     <h3>RTSH 24</h3>
     <button onclick="luaj('https://stream.rtsh.al/rtsh_live/rtsh24/playlist.m3u8','hls')">Luaj</button>
   </div>
-  <div class="kanal">
+
+  <div class="ch">
     <h3>France 24 (EN)</h3>
     <button onclick="luaj('https://static.france24.com/live/F24_EN_HI_HLS/live_web.m3u8','hls')">Luaj</button>
   </div>
-  <div class="kanal">
+
+  <div class="ch">
     <h3>DW News</h3>
     <button onclick="luaj('https://dwstream3-lh.akamaihd.net/i/dwstream3_live@124967/master.m3u8','hls')">Luaj</button>
   </div>
-  <div class="kanal">
-    <h3>Red Bull TV</h3>
-    <button onclick="luaj('https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8','hls')">Luaj</button>
-  </div>
-  <div class="kanal">
+
+  <div class="ch">
     <h3>TRT World</h3>
     <button onclick="luaj('https://www.youtube.com/embed/J8x7tIh9lvk','yt')">Luaj</button>
+  </div>
+
+  <div class="ch">
+    <h3>Red Bull TV (Sport)</h3>
+    <button onclick="luaj('https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8','hls')">Luaj</button>
   </div>
 </div>
 
 <div id="player"></div>
 
 <script>
-function luaj(src, tipi){
+function luaj(src, type){
   const div = document.getElementById("player");
   div.innerHTML = "";
-  if(tipi === "yt"){
+  if(type === "yt"){
     const iframe = document.createElement("iframe");
     iframe.src = src + "?autoplay=1";
     iframe.allow = "autoplay; fullscreen";
